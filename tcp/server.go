@@ -6,7 +6,11 @@
 
 package tcp
 
-import "time"
+import (
+	"github.com/ztaoing/GoRedisDemo/interface/tcp"
+	"net"
+	"time"
+)
 
 type Config struct {
 	Address       string        `yaml:"address"`
@@ -14,4 +18,9 @@ type Config struct {
 	Timeout       time.Duration `yaml:"timeout"`
 }
 
-//func ListenAndServe(cfg *Config,handler handler)
+func ListenAndServe(cfg *Config, handler tcp.Handler) {
+	listener, err := net.Listen("tcp", cfg.Address)
+	if err != nil {
+
+	}
+}
