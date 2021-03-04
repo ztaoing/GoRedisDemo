@@ -97,3 +97,20 @@ func (s *SimpleDict) RandomKeys(limit int) []string {
 	}
 	return result
 }
+
+func (s *SimpleDict) RandomDistinctKeys(limit int) []string {
+	size := limit
+	if size > len(s.m) {
+		size = len(s.m)
+	}
+	result := make([]string, size)
+	i := 0
+	for k := range s.m {
+		if i == limit {
+			break
+		}
+		result[i] = k
+		i++
+	}
+	return result
+}
